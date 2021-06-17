@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
+/*   Updated: 2021/06/17 20:51:50 by mishin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -12,8 +24,10 @@
 
 # define BLOCK 100
 # define BG 0x00C2F3DD
+
 # define FIN_MSG "DONE! PRESS ANY KEY TO QUIT."
 # define NOT_FIN_MSG "YOU HAVE TO EAT ALL RAMEN!"
+
 # define ERR_ARG "usage: ./so_long [file ...]\n"
 # define ERR_INPUT "not a valid map\nThe map must be composed of \
 only 5 possible characters:\n0 -> empty space\n1 -> wall\nC -> collectible\n\
@@ -26,6 +40,11 @@ E -> map exit\nP -> player’s starting position\n"
 # define ERR_MLX "failed to initialize mlx\n"
 # define ERR_WIN "failed to create window\n"
 # define ERR_IMG "failed to create images\n"
+
+#define ALL_COLLECTED 1
+#define NOT_COLLECTED -1
+#define MOVED 1
+#define NOT_MOVED 0
 													# include <stdio.h>
 
 /* linked list */
@@ -55,7 +74,7 @@ int		get_pos_player(t_map *map);
 int		make_bg_img(t_param_set *set, int color);
 int		make_elems_img(t_param_set *set);
 void	put_bg_img(t_param_set *set);
-int		put_elems_img(t_param_set *set);
+void	put_elems_img(t_param_set *set);
 void	clear_elems_img(t_param_set *set);
 
 /* move */

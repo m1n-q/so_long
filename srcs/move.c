@@ -1,15 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/17 20:34:26 by mishin            #+#    #+#             */
+/*   Updated: 2021/06/17 21:11:53 by mishin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-
-//TODO: CASE ) ALL_COLLECTED NOT_COLLECTED NOT_EXIT
-#define ALL_COLLECTED 1
-#define NOT_COLLECTED -1
-#define MOVED 1
-#define NOT_MOVED 0
-
 
 static int	move_up(t_param_set *set)
 {
-	if (set->map.pos.y >= 1 && (set->map.map)[set->map.pos.y - 1][set->map.pos.x] != '1')
+	if (set->map.pos.y >= 1 && \
+		(set->map.map)[set->map.pos.y - 1][set->map.pos.x] != '1')
 	{
 		(set->map.map)[set->map.pos.y][set->map.pos.x] = '0';
 		set->map.pos.y -= 1;
@@ -35,10 +41,10 @@ static int	move_up(t_param_set *set)
 	return (NOT_MOVED);
 }
 
-
 static int	move_down(t_param_set *set)
 {
-	if (set->map.pos.y + 1 < set->map.height && (set->map.map)[set->map.pos.y + 1][set->map.pos.x] != '1')
+	if (set->map.pos.y + 1 < set->map.height && \
+		(set->map.map)[set->map.pos.y + 1][set->map.pos.x] != '1')
 	{
 		(set->map.map)[set->map.pos.y][set->map.pos.x] = '0';
 		set->map.pos.y += 1;
@@ -66,7 +72,8 @@ static int	move_down(t_param_set *set)
 
 static int	move_left(t_param_set *set)
 {
-	if (set->map.pos.x >= 1 && (set->map.map)[set->map.pos.y][set->map.pos.x - 1] != '1')
+	if (set->map.pos.x >= 1 && \
+		(set->map.map)[set->map.pos.y][set->map.pos.x - 1] != '1')
 	{
 		(set->map.map)[set->map.pos.y][set->map.pos.x] = '0';
 		set->map.pos.x -= 1;
@@ -93,7 +100,8 @@ static int	move_left(t_param_set *set)
 }
 static int	move_right(t_param_set *set)
 {
-	if (set->map.pos.y + 1 < set->map.width && (set->map.map)[set->map.pos.y][set->map.pos.x + 1] != '1')
+	if (set->map.pos.y + 1 < set->map.width && \
+		(set->map.map)[set->map.pos.y][set->map.pos.x + 1] != '1')
 	{
 		(set->map.map)[set->map.pos.y][set->map.pos.x] = '0';
 		set->map.pos.x += 1;
@@ -119,8 +127,8 @@ static int	move_right(t_param_set *set)
 	return (NOT_MOVED);
 }
 
-int			move_player(int	keycode, t_param_set *set)
-{	
+int			move_player(int	keycode, t_param_set *set)		//NORM
+{
 	static int	count;
 	int			moved;
 
@@ -149,4 +157,3 @@ int			move_player(int	keycode, t_param_set *set)
 	}
 	return (0);
 }
-

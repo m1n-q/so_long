@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   type.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/17 20:35:40 by mishin            #+#    #+#             */
+/*   Updated: 2021/06/17 20:42:24 by mishin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TYPE_H
 # define TYPE_H
 
-typedef struct	s_elems
+typedef struct	s_ptr 
 {
-	void		*w;
-	void		*c;
-	void		*p;
-	void		*e;
-}				t_elems;
+	void		*mlx;
+	void		*win;
+}				t_ptr;
 
 typedef struct	s_data
 {
@@ -18,17 +28,17 @@ typedef struct	s_data
 	int			endian;
 }				t_data;
 
-typedef struct	s_ptr 
-{
-	void		*mlx;
-	void		*win;
-}				t_ptr;
-
 typedef struct	s_vector
 {
 	int			x;
 	int			y;
 }				t_vector;
+
+typedef struct	s_ll
+{
+	char	c;
+	struct s_ll	*next;
+}				t_ll;
 
 typedef struct	s_map
 {
@@ -47,11 +57,13 @@ typedef struct	s_bg
 	unsigned	*addr;
 }				t_bg;
 
-typedef struct	s_ll
+typedef struct	s_elems
 {
-	char	c;
-	struct s_ll	*next;
-}				t_ll;
+	void		*w;
+	void		*c;
+	void		*p;
+	void		*e;
+}				t_elems;
 
 typedef struct	s_param_set
 {
