@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:20 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/17 21:12:29 by mishin           ###   ########.fr       */
+/*   Updated: 2021/06/29 01:21:29 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,24 @@ void	init_map(t_map *map)
 
 int		clear_map(t_map *map)
 {
-	int	i;
+	static int	cleared;
+	int			i;
 
 	i = 0;
-	while (i < map->height)
-		free(map->map[i++]);
-	free(map->map);
+	if (!cleared)
+	{
+		while (i < map->height)
+			free(map->map[i++]);
+		free(map->map);
+		cleared = 1;
+	}
 	return (-1);
 }
 
 int		get_pos_player(t_map *map)
 {
-	
-	int			i;
-	int			j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while ((map->map)[i])
@@ -53,20 +57,20 @@ int		get_pos_player(t_map *map)
 			}
 			j++;
 		}
-		i++;	
+		i++;
 	}
 	return (clear_map(map));
 }
 
 int		get_elems_count(t_map *map)
 {
-	int i;
-	int j;
-    int	p;
-    int	e;
+	int	i;
+	int	j;
+	int	p;
+	int	e;
 
-    p = 0;
-    e = 0;
+	p = 0;
+	e = 0;
 	i = -1;
 	while ((map->map)[++i])
 	{
@@ -77,14 +81,13 @@ int		get_elems_count(t_map *map)
 				map->collectibles++;
 			else if ((map->map)[i][j] == '1')
 				map->walls++;
-            else if ((map->map)[i][j] == 'P')
+			else if ((map->map)[i][j] == 'P')
 				p++;
-            else if ((map->map)[i][j] == 'E')
+			else if ((map->map)[i][j] == 'E')
 				e++;
 		}
 	}
-	return (map->collectibles && map->walls && p == 1 && e == 1 ?\
-			0 : clear_map(map));
+	return (map->collectibles && map->walls && p == 1 && e == 1 ? 0 : clear_map(map));
 }
 
 int		check_surrounding(t_map	*map)

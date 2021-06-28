@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:40 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/17 20:42:24 by mishin           ###   ########.fr       */
+/*   Updated: 2021/06/29 00:13:15 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_vector
 
 typedef struct	s_ll
 {
-	char	c;
+	char		c;
 	struct s_ll	*next;
 }				t_ll;
 
@@ -63,13 +63,15 @@ typedef struct	s_elems
 	void		*c;
 	void		*p;
 	void		*e;
+	void		*ef;
+	void		*es;
 }				t_elems;
 
 typedef struct	s_param_set
 {
 	t_map		map;
 	t_ptr		ptr;
-	t_elems		elems;
 	t_bg		bg;
+	t_elems		elems;
 }				t_param_set;
 #endif

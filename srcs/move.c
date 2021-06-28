@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:26 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/17 21:11:53 by mishin           ###   ########.fr       */
+/*   Updated: 2021/06/29 01:10:07 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	move_left(t_param_set *set)
 	}
 	return (NOT_MOVED);
 }
+
 static int	move_right(t_param_set *set)
 {
 	if (set->map.pos.y + 1 < set->map.width && \
@@ -127,7 +128,7 @@ static int	move_right(t_param_set *set)
 	return (NOT_MOVED);
 }
 
-int			move_player(int	keycode, t_param_set *set)		//NORM
+int			move_player(int	keycode, t_param_set *set)
 {
 	static int	count;
 	int			moved;
@@ -137,19 +138,17 @@ int			move_player(int	keycode, t_param_set *set)		//NORM
 		return (leave_window(set));
 	if (keycode == KEY_W)
 		if ((moved = move_up(set)) == NOT_COLLECTED)
-			return (notifying(set, NOT_FIN_MSG));
+			return (put_elems_img(set, NOT_COLLECTED));
 	if (keycode == KEY_S)
 		if ((moved = move_down(set)) == NOT_COLLECTED)
-			return (notifying(set, NOT_FIN_MSG));
+			return (put_elems_img(set, NOT_COLLECTED));
 	if (keycode == KEY_A)
 		if ((moved = move_left(set)) == NOT_COLLECTED)
-			return (notifying(set, NOT_FIN_MSG));
+			return (put_elems_img(set, NOT_COLLECTED));
 	if (keycode == KEY_D)
 		if ((moved = move_right(set)) == NOT_COLLECTED)
-			return (notifying(set, NOT_FIN_MSG));
-	put_elems_img(set);
-	if (set->map.fin)
-		notifying(set, FIN_MSG);
+			return (put_elems_img(set, NOT_COLLECTED));
+	set->map.fin ? put_elems_img(set, ALL_COLLECTED) : put_elems_img(set, 0);
 	if (moved)
 	{	
 		count++;

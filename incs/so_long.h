@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/17 20:51:50 by mishin           ###   ########.fr       */
+/*   Updated: 2021/06/29 00:23:17 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <string.h>
 # include <errno.h>
 
-# define BLOCK 100
+# define BLOCK 64
 # define BG 0x00C2F3DD
 
 # define FIN_MSG "DONE! PRESS ANY KEY TO QUIT."
@@ -74,7 +74,7 @@ int		get_pos_player(t_map *map);
 int		make_bg_img(t_param_set *set, int color);
 int		make_elems_img(t_param_set *set);
 void	put_bg_img(t_param_set *set);
-void	put_elems_img(t_param_set *set);
+int		put_elems_img(t_param_set *set, int is_collected);
 void	clear_elems_img(t_param_set *set);
 
 /* move */
@@ -84,7 +84,7 @@ int		move_player(int	keycode, t_param_set *set);
 /* window */
 
 int		leave_window(t_param_set *set);
-int		notifying(t_param_set *set, char *msg);
+int		notifying(t_param_set *set, int is_collected);
 
 /* err */
 void	err(void);

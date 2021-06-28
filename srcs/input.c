@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:33:56 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/17 21:03:17 by mishin           ###   ########.fr       */
+/*   Updated: 2021/06/29 01:40:44 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,24 @@ int		check_rectangular(t_ll *ll, t_map *map)
 	return (0);
 }
 
-int		ll_to_map(t_ll *ll, t_map *map)		//NORM
+int		ll_to_map(t_ll *ll, t_map *map)
 {
 	t_ll	*cur;
-	int 	i;
+	int		i;
 	int		j;
 
 	cur = ll;
-	map->map = (char **)ft_calloc(map->height + 1, sizeof(char *));
-	if (!map->map)
+	if (!(map->map = (char **)ft_calloc(map->height + 1, sizeof(char *))))
 		return (ll_clear(&ll));
 	i = -1;
-	while (++i < map->height)
+	while (++i < map->height && (j = -1))
 	{
-		(map->map)[i] = (char *)ft_calloc(map->width + 1, sizeof(char));
-		if (!((map->map)[i]))
+		if (!((map->map)[i] = (char *)ft_calloc(map->width + 1, sizeof(char))))
 		{
 			while (--i >= 0)
 				free((map->map)[i]);
 			return (ll_clear(&ll));
 		}
-		j = -1;
 		while (++j < map->width)
 		{
 			if (cur->c == '\n')
@@ -95,6 +92,5 @@ int		ll_to_map(t_ll *ll, t_map *map)		//NORM
 			cur = cur->next;
 		}
 	}
-	ll_clear(&ll);
-	return (0);
+	return (1 + ll_clear(&ll));
 }
