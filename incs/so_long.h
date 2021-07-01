@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 00:23:17 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 14:39:24 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ int		leave_window(t_param_set *set);
 int		notifying(t_param_set *set, int is_collected);
 
 /* err */
-void	err(void);
 void	myerr(char *msg);
+void	check_ll_err(int fd, t_ll **head, t_param_set *set);
+void	check_map_err(t_param_set *set);
+void	check_mlx_err(t_param_set *set);
+void	check_img_err(t_param_set *set);
 #endif

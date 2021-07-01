@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:20 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 01:21:29 by shin             ###   ########.fr       */
+/*   Updated: 2021/06/29 19:18:56 by shin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_map(t_map *map)
 int		clear_map(t_map *map)
 {
 	static int	cleared;
-	int			i;
+	int		i;
 
 	i = 0;
 	if (!cleared)
@@ -51,8 +51,8 @@ int		get_pos_player(t_map *map)
 		while ((map->map)[i][j])
 		{
 			if ((map->map)[i][j] == 'P')
-			{	
-				map->pos = (t_vector){.y = i, .x = j};
+			{
+				map->pos = (t_vector){.y = i, .x = j};	
 				return (0);
 			}
 			j++;
