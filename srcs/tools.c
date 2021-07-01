@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:40 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 01:09:01 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 18:40:43 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int		notifying(t_param_set *set, int is_collected)
-{
-	put_elems_img(set, is_collected);
-	return (-1);
-}
 
 int		leave_window(t_param_set *set)
 {
@@ -26,4 +20,11 @@ int		leave_window(t_param_set *set)
 	mlx_destroy_window(set->ptr.mlx, set->ptr.win);
 	exit(0);
 	return (0);
+}
+
+void	print_movement_count(int count)
+{
+	ft_putstr_fd("# movements ==> ", 1);
+	ft_putnbr_fd(count, 1);
+	ft_putchar_fd('\n', 1);
 }

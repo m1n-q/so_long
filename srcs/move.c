@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:26 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 01:10:07 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 18:19:54 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,6 @@ int			move_player(int	keycode, t_param_set *set)
 			return (put_elems_img(set, NOT_COLLECTED));
 	set->map.fin ? put_elems_img(set, ALL_COLLECTED) : put_elems_img(set, 0);
 	if (moved)
-	{	
-		count++;
-		printf("# movements ==> %d\n", count);
-	}
+		print_movement_count(++count);
 	return (0);
 }

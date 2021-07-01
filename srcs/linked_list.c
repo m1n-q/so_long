@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:33:58 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 07:12:27 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 17:40:00 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,37 @@ t_ll	*ll_new(char c)
 	return (ret);
 }
 
-void	ll_push(t_ll **ll, t_ll *new)
+void	ll_push(t_ll **head, t_ll *new)
 {
 	t_ll	*cur;
 
-	if (!ll)
+	if (!head)
 		return ;
-	if (!*ll)
+	if (!*head)
 	{
-		*ll = new;
+		*head = new;
 		return ;
 	}
-	cur = *ll;
+	cur = *head;
 	while (cur->next)
 		cur = cur->next;
 	cur->next = new;
 }
 
-int		ll_clear(t_ll **ll)
+int		ll_clear(t_ll **head)
 {
 	t_ll	*cur;
 	t_ll	*tmp;
-
-	if (!ll)
+	
+	if (!head)
 		return (-1);
-	cur = *ll;
+	cur = *head;
 	while (cur)
 	{
 		tmp = cur->next;
 		free(cur);
 		cur = tmp;
 	}
-	*ll = NULL;
+	*head = NULL;
 	return (-1);
 }

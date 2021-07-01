@@ -6,13 +6,13 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:33:56 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 01:40:44 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 17:30:33 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		input_to_ll(int fd, t_ll **ll)	
+int		input_to_ll(int fd, t_ll **head)	
 {
 	t_ll	*new;
 	ssize_t	size;
@@ -29,22 +29,22 @@ int		input_to_ll(int fd, t_ll **ll)
 		{
 			new = ll_new(c);
 			if (!new)
-				return (ll_clear(ll));
-			ll_push(ll, new);
+				return (ll_clear(head));
+			ll_push(head, new);
 		}
 		else
-			return (ll_clear(ll));
+			return (ll_clear(head));
 	}
 	return (size);
 }
 
-int		check_rectangular(t_ll *ll, t_map *map)
+int		check_rectangular(t_ll **head, t_map *map)
 {
 	t_ll	*cur;
 	int		x;
 
 	x = 0;
-	cur = ll;
+	cur = *head;
 	while (cur)
 	{
 		if (cur->c != '\n')
@@ -58,7 +58,7 @@ int		check_rectangular(t_ll *ll, t_map *map)
 		{
 			map->height++;
 			if (map->height != 1 && x != map->width)
-				return (ll_clear(&ll));
+				return (ll_clear(head));
 			x = 0;
 		}
 		cur = cur->next;
@@ -66,15 +66,15 @@ int		check_rectangular(t_ll *ll, t_map *map)
 	return (0);
 }
 
-int		ll_to_map(t_ll *ll, t_map *map)
+int		ll_to_map(t_ll **head, t_map *map)
 {
 	t_ll	*cur;
 	int		i;
 	int		j;
 
-	cur = ll;
+	cur = *head;
 	if (!(map->map = (char **)ft_calloc(map->height + 1, sizeof(char *))))
-		return (ll_clear(&ll));
+		return (ll_clear(head));
 	i = -1;
 	while (++i < map->height && (j = -1))
 	{
@@ -82,7 +82,7 @@ int		ll_to_map(t_ll *ll, t_map *map)
 		{
 			while (--i >= 0)
 				free((map->map)[i]);
-			return (ll_clear(&ll));
+			return (ll_clear(head));
 		}
 		while (++j < map->width)
 		{
@@ -92,5 +92,5 @@ int		ll_to_map(t_ll *ll, t_map *map)
 			cur = cur->next;
 		}
 	}
-	return (1 + ll_clear(&ll));
+	return (1 + ll_clear(head));
 }

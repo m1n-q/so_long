@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 NAME = so_long
  
 SRCS_DIR = ./srcs
-SRCS_NAME = main.c linked_list.c input.c img.c map.c move.c window.c err.c
+SRCS_NAME = main.c linked_list.c input.c img.c map.c move.c tools.c err.c
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
 OBJS = $(SRCS:.c=.o)
 

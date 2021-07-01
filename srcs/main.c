@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:09 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/01 14:48:11 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 18:37:40 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	ll = NULL;
 	init_map(&set.map);
 	if (argc != 2)
-		myerr(ERR_ARG);
+		errmsg(ERR_ARG);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
 		perror("Error\nso_long");
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	check_mlx_err(&set);
 	check_img_err(&set);
 	put_elems_img(&set, 0);
-	mlx_hook(set.ptr.win, KeyPress, KeyPressMask, move_player, &set);
-	mlx_hook(set.ptr.win, DestroyNotify, KeyPressMask, leave_window, &set);
+	mlx_hook(set.ptr.win, KeyPress, 0L, move_player, &set);
+	mlx_hook(set.ptr.win, DestroyNotify, 0L, leave_window, &set);
 	mlx_loop(set.ptr.mlx);
 }

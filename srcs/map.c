@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:20 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 19:18:56 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/01 17:39:54 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_map(t_map *map)
 int		clear_map(t_map *map)
 {
 	static int	cleared;
-	int		i;
+	int			i;
 
 	i = 0;
 	if (!cleared)
