@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:33:44 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/14 23:07:12 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 23:28:47 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,8 @@ void	errmsg(char *msg)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
-	exit(1);
+	if (errno)
+		exit(errno);
+	else
+		exit(1);
 }

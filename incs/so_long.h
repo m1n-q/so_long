@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/14 23:09:10 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 23:33:16 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "type.h"
 
 # include <fcntl.h>
-# include <string.h>
 # include <errno.h>
 # include <stdio.h>
 
