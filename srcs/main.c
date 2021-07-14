@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:09 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/01 18:37:40 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 21:44:34 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	check_mlx_err(&set);
 	check_img_err(&set);
 	put_elems_img(&set, 0);
-	mlx_hook(set.ptr.win, KeyPress, 0L, move_player, &set);
-	mlx_hook(set.ptr.win, DestroyNotify, 0L, leave_window, &set);
+	mlx_hook(set.ptr.win, KEY_PRESS, 0L, move_player, &set);
+	mlx_hook(set.ptr.win, DESTROY_NOTIFY, 0L, leave_window, &set);
 	mlx_loop(set.ptr.mlx);
 }

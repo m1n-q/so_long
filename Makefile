@@ -1,6 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
-
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 NAME = so_long
  
 SRCS_DIR = ./srcs
@@ -19,14 +18,13 @@ LIB_DIR = ./lib
  
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
  
- 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR) bonus
 	cp $(LIBFT_DIR)/libft.a $(LIB_DIR)/
 	$(MAKE) -C $(LIBMLX_DIR) all
 	cp $(LIBMLX_DIR)/libmlx.dylib $(LIB_DIR)/
-	$(CC) $(CFLAGS) -L$(LIB_DIR) -l$(LIBFT) -l$(LIBMLX) -lX11 -framework OpenGL -framework AppKit $^ -o $@
-#-framework OpenGL -framework AppKit $^ -o $@
+	cp $(LIBMLX_DIR)/libmlx.dylib ./
+	$(CC) $(CFLAGS) -L$(LIB_DIR) -l$(LIBFT) -l$(LIBMLX) -framework OpenGL -framework AppKit $^ -o $@
  
 $(SRCS_DIR)/%.o : $(SRCS_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCS_DIR) -c $< -o $@
@@ -43,7 +41,9 @@ fclean :
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(LIBMLX_DIR) clean
 	rm -rf $(NAME) $(OBJS)
- 
+	rm -rf $(LIB_DIR)/*
+	rm -rf libmlx.dylib
+
 re : fclean all
 
 bonus : all

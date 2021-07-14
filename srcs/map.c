@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:34:20 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/01 17:39:54 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 19:23:14 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		get_pos_player(t_map *map)
 		{
 			if ((map->map)[i][j] == 'P')
 			{
-				map->pos = (t_vector){.y = i, .x = j};	
+				map->pos = (t_vector){.y = i, .x = j};
 				return (0);
 			}
 			j++;
@@ -87,10 +87,11 @@ int		get_elems_count(t_map *map)
 				e++;
 		}
 	}
-	return (map->collectibles && map->walls && p == 1 && e == 1 ? 0 : clear_map(map));
+	return (map->collectibles && map->walls && p == 1 && e == 1 ? \
+			0 : clear_map(map));
 }
 
-int		check_surrounding(t_map	*map)
+int		check_surrounding(t_map *map)
 {
 	int	i;
 

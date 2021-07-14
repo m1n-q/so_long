@@ -6,20 +6,20 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:33:56 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/01 17:30:33 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 14:42:30 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		input_to_ll(int fd, t_ll **head)	
+int		input_to_ll(int fd, t_ll **head)
 {
 	t_ll	*new;
 	ssize_t	size;
 	char	c;
 
 	while ((size = read(fd, &c, 1)) > 0)
-	{	
+	{
 		if (c == '1' || \
 			c == '0' || \
 			c == 'P' || \

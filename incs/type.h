@@ -6,14 +6,14 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:40 by mishin            #+#    #+#             */
-/*   Updated: 2021/06/29 00:13:15 by shin             ###   ########.fr       */
+/*   Updated: 2021/07/14 22:00:05 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
-typedef struct	s_ptr 
+typedef struct	s_ptr
 {
 	void		*mlx;
 	void		*win;

@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/01 18:39:06 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 22:02:40 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define BLOCK 64
 # define BG 0x00C2F3DD
 
-/* error msg */
 # define ERR_ARG "usage: ./so_long [file ...]\n"
 # define ERR_RECT "map is not rectangular\n"
 # define ERR_MALLOC "malloc error\n"
@@ -41,48 +40,64 @@ E -> map exit\nP -> player’s starting position\n"
 # define ERR_ELEMS "map must have at least one exit, one collectible, \
 and one player\n"
 
-/* status after move */
-#define ALL_COLLECTED 1
-#define NOT_COLLECTED -1
-#define MOVED 1
-#define NOT_MOVED 0
+/*
+** status after move
+*/
 
-/* linked list */
+# define EXIT_OK 1
+# define EXIT_FAIL -1
+# define MOVED 1
+# define NOT_MOVED 0
+
+/*
+** linked list
+*/
 t_ll	*ll_new(char c);
 void	ll_push(t_ll **head, t_ll *new);
 int		ll_clear(t_ll **head);
 
-/* input */
+/*
+** input
+*/
 int		input_to_ll(int fd, t_ll **head);
 int		check_rectangular(t_ll **head, t_map *map);
 int		ll_to_map(t_ll **head, t_map *map);
 int		get_elems_count(t_map *map);
 
-/* map */
+/*
+** map
+*/
 void	init_map(t_map *map);
 int		clear_map(t_map *map);
 int		check_surrounding(t_map	*map);
 int		get_pos_player(t_map *map);
 
-/* img */
+/*
+** img
+*/
 int		make_bg_img(t_param_set *set, int color);
 int		make_elems_img(t_param_set *set);
-void	put_bg_img(t_param_set *set);
+void	put_bg_img(t_param_set *set, t_vector *v);
 int		put_elems_img(t_param_set *set, int is_collected);
 void	clear_elems_img(t_param_set *set);
 
-/* move */
+/*
+** move
+*/
 int		move_player(int	keycode, t_param_set *set);
 
-/* err */
+/*
+** err
+*/
 void	errmsg(char *msg);
 void	check_ll_err(int fd, t_ll **head, t_param_set *set);
 void	check_map_err(t_param_set *set);
 void	check_mlx_err(t_param_set *set);
 void	check_img_err(t_param_set *set);
 
-/* tools */
+/*
+** tools
+*/
 int		leave_window(t_param_set *set);
 void	print_movement_count(int count);
-
 #endif
