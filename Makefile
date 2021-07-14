@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
  
 SRCS_DIR = ./srcs
@@ -15,8 +15,6 @@ LIBFT = ft
 LIBMLX = mlx
 LIB_DIR = ./lib
 
- 
-MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
  
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR) bonus

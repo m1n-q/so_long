@@ -6,7 +6,7 @@
 /*   By: mishin <mishin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 20:35:14 by mishin            #+#    #+#             */
-/*   Updated: 2021/07/14 22:02:40 by mishin           ###   ########.fr       */
+/*   Updated: 2021/07/14 23:09:10 by mishin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
-# include "mlx.h"
+# include "../mlx/mlx.h"
 # include "keys.h"
 # include "type.h"
 
@@ -34,11 +34,8 @@
 # define ERR_MLX "failed to initialize mlx\n"
 # define ERR_WIN "failed to create window\n"
 # define ERR_IMG "failed to create images\n"
-# define ERR_INPUT "not a valid map\nThe map must be composed of \
-only 5 possible characters:\n0 -> empty space\n1 -> wall\nC -> collectible\n\
-E -> map exit\nP -> player’s starting position\n"
-# define ERR_ELEMS "map must have at least one exit, one collectible, \
-and one player\n"
+# define ERR_INPUT "invalid map\nmap must be composed of ( 0, 1, C, P, E )\n"
+# define ERR_ELEMS "map must have 1 exit, 1 player, at least 1 collectible\n"
 
 /*
 ** status after move
